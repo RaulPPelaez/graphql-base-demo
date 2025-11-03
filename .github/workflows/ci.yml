@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Conda environment
+        uses: conda-incubator/setup-miniconda@v3
+        with:
+          auto-update-conda: true
+          activate-environment: graphql-base-api
+          python-version: '3.11'
+          auto-activate-base: false
+          use-mamba: true
+
+      - name: Show versions
+        shell: bash -l {0}
+        run: |
+          python -V
+          python -c "import django, sys; print('Django', django.get_version()); print('Python', sys.version)"
+
+      - name: Run tests
+        shell: bash -l {0}
+        run: |
+          pytest -q
