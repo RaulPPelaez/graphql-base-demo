@@ -1,0 +1,16 @@
+name: graphql-base-api
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python>=3.11
+  - pip
+  - uvicorn
+  - pytest
+  - pytest-asyncio
+  - pip:
+      - Django>=5.0<6.0
+      - strawberry-graphql
+      - aiodataloader
+      - python-dotenv
+
