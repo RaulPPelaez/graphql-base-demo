@@ -34,19 +34,22 @@ A Django-based GraphQL API that allows users to manage apps with a subscription 
 
 ## Setup
 
-### 1. Install Dependencies
+### Install Dependencies
 
 ```bash
 # Create a virtual environment with conda
-conda env create 
+conda env create
+conda activate graphql-base-api
+```
 
-# Run Migrations
+### Run Migrations
 
+```bash
 python manage.py makemigrations
 python manage.py migrate
 ```
 
-### 3. Create Test Fixtures
+### Create Test Fixtures
 
 ```bash
 python manage.py create_fixtures
@@ -56,20 +59,19 @@ This will create:
 - 3 hobby users with 2 apps each
 - 3 pro users with 3-5 apps each
 
-### 4. Create Admin User (Optional)
+### Create Admin User (Optional)
 
 ```bash
 python manage.py createsuperuser
 ```
 
-### 5. Run the Server
+### Run the Server
 
 For instance, using Django's development server:
 
 ```bash
 python manage.py runserver
 ```
-
 ## GraphQL Endpoint
 
 Access the GraphQL interface at: http://localhost:8000/graphql
@@ -218,8 +220,8 @@ These IDs can be used directly in the `node` query and mutations.
 ### Run All Tests
 
 ```bash
-# Run all tests
-python manage.py test
+# Run all tests with pytest
+pytest -v
 
 # Or using pytest
 pytest
