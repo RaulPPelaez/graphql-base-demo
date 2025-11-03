@@ -2,24 +2,6 @@
 
 A Django-based GraphQL API that allows users to manage apps with a subscription plan system (Hobby/Pro).
 
-## Features
-
-- **GraphQL API** with Relay Node interface
-- **Custom ID formats**: Users (`u_[a-Z0-9]+`) and Apps (`app_[a-Z0-9]+`)
-- **DataLoaders** for efficient database queries (prevents N+1 problems)
-- **Async support** throughout the business logic
-- **Plan system**: Hobby and Pro plans with upgrade/downgrade mutations
-- **ASGI** configuration for async operations
-
-## Tech Stack
-
-- Python ≥ 3.11
-- Django 5.x
-- Strawberry GraphQL (async)
-- SQLite (default, configurable to PostgreSQL/MySQL)
-- ASGI with Uvicorn
-- pytest for testing
-
 ## Models
 
 ### User
@@ -177,43 +159,6 @@ mutation downgradeUser {
   }
 }
 ```
-
-## Notes
-
-### Getting Real IDs
-
-After running `create_fixtures`, you can get real user and app IDs by:
-
-1. Using the GraphQL interface to query all users/apps
-2. Using Django admin at http://localhost:8000/admin
-3. Using Django shell:
-
-```bash
-python manage.py shell
-```
-
-```python
-from apps.users.models import User
-from apps.deployedapps.models import DeployedApp
-
-# Get all users
-users = User.objects.all()
-for user in users:
-    print(f"{user.username}: {user.id}")
-
-# Get all apps
-apps = DeployedApp.objects.all()
-for app in apps:
-    print(f"{app.id} (Owner: {app.owner.username})")
-```
-
-### IDs
-
-The GraphQL API returns IDs in their raw database format:
-- User IDs: `u_[a-Z0-9]+` (e.g., `u_ky3kpR0Cv6GThnHxK`)
-- App IDs: `app_[a-Z0-9]+` (e.g., `app_ttWn49RYCefdU0ick`)
-
-These IDs can be used directly in the `node` query and mutations.
 
 ## Testing
 
