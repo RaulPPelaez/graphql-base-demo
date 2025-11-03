@@ -10,6 +10,7 @@ dependencies:
   - pytest-asyncio
   - make
   - Django>=5.0,<6.0
+  - pytest-django
   - strawberry-graphql
   - aiodataloader
    
