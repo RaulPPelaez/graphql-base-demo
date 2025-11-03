@@ -9,7 +9,7 @@ dependencies:
   - pytest
   - pytest-asyncio
   - pip:
-      - Django>=5.0<6.0
+      - Django>=5.0,<6.0
       - strawberry-graphql
       - aiodataloader
       - python-dotenv
