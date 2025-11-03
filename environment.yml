@@ -9,8 +9,8 @@ dependencies:
   - pytest
   - pytest-asyncio
   - make
-  - pip:
-    - Django>=5.0,<6.0
-    - strawberry-graphql
-    - aiodataloader
+  - Django>=5.0,<6.0
+  - strawberry-graphql
+  - aiodataloader
+   
 

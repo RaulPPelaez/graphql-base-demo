@@ -19,6 +19,7 @@ jobs:
         with:
           auto-update-conda: true
           activate-environment: graphql-base-api
+          environment-file: environment.yml
           python-version: '3.11'
           auto-activate-base: false
           use-mamba: true
