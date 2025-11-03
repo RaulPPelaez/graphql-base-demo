@@ -30,6 +30,11 @@ conda activate graphql-base-api
 python manage.py makemigrations
 python manage.py migrate
 ```
+You can also use the Makefile:
+
+```bash
+make setup
+```
 
 ### Create Test Fixtures
 
@@ -59,6 +64,38 @@ python manage.py runserver
 Access the GraphQL interface at: http://localhost:8000/graphql
 
 ## Example Queries
+
+### List All Users
+
+```graphql
+query getAllUsers {
+  users {
+    id
+    username
+    plan
+    apps {
+      id
+      active
+    }
+  }
+}
+```
+
+### List All Apps
+
+```graphql
+query getAllApps {
+  apps {
+    id
+    active
+    owner {
+      id
+      username
+      plan
+    }
+  }
+}
+```
 
 ### Get User by ID
 
@@ -96,37 +133,7 @@ query getApp {
 }
 ```
 
-### List All Users
 
-```graphql
-query getAllUsers {
-  users {
-    id
-    username
-    plan
-    apps {
-      id
-      active
-    }
-  }
-}
-```
-
-### List All Apps
-
-```graphql
-query getAllApps {
-  apps {
-    id
-    active
-    owner {
-      id
-      username
-      plan
-    }
-  }
-}
-```
 
 ### Upgrade Account
 
@@ -165,9 +172,5 @@ mutation downgradeUser {
 ### Run All Tests
 
 ```bash
-# Run all tests with pytest
 pytest -v
-
-# Or using pytest
-pytest
 ```
